@@ -36,85 +36,39 @@ function Chat() {
   };
 
   return (
-    <div style={styles.chatContainer}>
-      <div style={styles.messagesContainer}>
+    <div className="w-96 mx-auto my-12 border border-gray-300 rounded-lg font-sans bg-white">
+      <div className="h-72 p-4 overflow-y-auto bg-gray-100">
         {messages.map((msg, index) => (
           <div
             key={index}
-            style={
-              msg.sender === 'user' ? styles.userMessage : styles.botMessage
-            }
+            className={`my-1 p-2 rounded-lg inline-block ${
+              msg.sender === 'user'
+                ? 'bg-green-200 float-right clear-both'
+                : 'bg-gray-300 float-left clear-both'
+            }`}
           >
             {msg.text}
           </div>
         ))}
       </div>
-      <div style={styles.inputContainer}>
+      <div className="flex border-t border-gray-300">
         <input
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           onKeyPress={handleKeyPress}
-          style={styles.inputField}
+          className="flex-1 p-2 outline-none"
           placeholder="Type your message..."
         />
-        <button onClick={sendMessage} style={styles.sendButton}>
+        <button
+          onClick={sendMessage}
+          className="px-4 py-2 bg-green-500 text-white hover:bg-green-600 transition-colors duration-200"
+        >
           Send
         </button>
       </div>
     </div>
   );
 }
-
-// Simple inline styles for demonstration
-const styles = {
-  chatContainer: {
-    width: '400px',
-    margin: '50px auto',
-    border: '1px solid #ccc',
-    borderRadius: '5px',
-    fontFamily: 'Arial, sans-serif',
-    backgroundColor: '#fff',
-  },
-  messagesContainer: {
-    padding: '10px',
-    height: '300px',
-    overflowY: 'scroll',
-    backgroundColor: '#f9f9f9',
-  },
-  userMessage: {
-    textAlign: 'right',
-    margin: '5px',
-    padding: '8px',
-    backgroundColor: '#dcf8c6',
-    borderRadius: '10px',
-    display: 'inline-block',
-  },
-  botMessage: {
-    textAlign: 'left',
-    margin: '5px',
-    padding: '8px',
-    backgroundColor: '#eaeaea',
-    borderRadius: '10px',
-    display: 'inline-block',
-  },
-  inputContainer: {
-    display: 'flex',
-    borderTop: '1px solid #ccc',
-  },
-  inputField: {
-    flex: 1,
-    padding: '10px',
-    border: 'none',
-    outline: 'none',
-  },
-  sendButton: {
-    padding: '10px 15px',
-    border: 'none',
-    backgroundColor: '#5cb85c',
-    color: '#fff',
-    cursor: 'pointer',
-  },
-};
 
 export default Chat;

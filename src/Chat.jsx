@@ -36,8 +36,8 @@ function Chat() {
   };
 
   return (
-    <div className="w-96 mx-auto my-12 border border-gray-300 rounded-lg font-sans bg-white">
-      <div className="h-72 p-4 overflow-y-auto bg-gray-100">
+    <div className="w-1/2 mx-auto my-12 border border-gray-300 rounded-lg font-sans bg-white">
+      <div className="h-96 p-4 overflow-y-auto bg-gray-100">
         {messages.map((msg, index) => (
           <div
             key={index}

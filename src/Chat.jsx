@@ -7,13 +7,13 @@ function Chat() {
   const [inputText, setInputText] = useState('');
 
   // Stub function for bot response
-  function get_bot_response(userMessage) {
+  async function get_bot_response(userMessage) {
     // For now, just return a stubbed response
     return 'This is a stubbed response.';
   }
 
   // Handle sending a message
-  const sendMessage = () => {
+  const sendMessage = async () => {
     if (inputText.trim() === '') return;
 
     // Add user's message to chat

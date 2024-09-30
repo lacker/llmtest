@@ -21,7 +21,8 @@ function Chat() {
     setMessages((prevMessages) => [...prevMessages, userMessage]);
 
     // Get bot's response
-    const botReply = { sender: 'bot', text: get_bot_response(inputText) };
+    const text = await get_bot_response(inputText);
+    const botReply = { sender: 'bot', text };
     setMessages((prevMessages) => [...prevMessages, botReply]);
 
     // Clear input field

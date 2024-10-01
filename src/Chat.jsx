@@ -8,6 +8,9 @@ function Chat() {
 
   // Stub function for bot response
   async function get_bot_response(userMessage) {
+    // Pause for 1 second to simulate bot response time
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     // For now, just return a stubbed response
     return 'This is a stubbed response.';
   }

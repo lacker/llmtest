@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ollama from 'ollama/browser';
 
 function Chat() {
   const [messages, setMessages] = useState([
@@ -7,12 +8,14 @@ function Chat() {
   const [inputText, setInputText] = useState('');
 
   // Stub function for bot response
-  async function get_bot_response(userMessage) {
+  async function get_bot_response(content) {
     // Pause for 1 second to simulate bot response time
-    await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    // For now, just return a stubbed response
-    return 'This is a stubbed response.';
+    const response = await ollama.chat({
+      model: 'llama3.2',
+      messages: [{ role: 'user', content }],
+    })
+    return response.message.content;
   }
 
   // Handle sending a message
